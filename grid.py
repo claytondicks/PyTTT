@@ -6,7 +6,7 @@ Created on Apr 12, 2014
 
 import pygame
 from pygame.rect import Rect
-from random import randint
+from cell import Cell
 
 class Grid(object):
 
@@ -18,7 +18,9 @@ class Grid(object):
 			y = row * (320/3)
 			for col in range(3):
 				x = col * (320/3)
-				self.grid[row * 3 + col] = (Rect(y + 5, x + 5, (320/3) - 10, (320/3) - 10), 0)
+				rect = (Rect(y + 5, x + 5, (320/3) - 10, (320/3) - 10), 0)
+				
+				self.grid[row * 3 + col] = Cell(rect, self.surface)
 			
 		self.surface = surface
 		self.player = player
@@ -27,9 +29,6 @@ class Grid(object):
 		
 		self.surface.fill((0,0,0))
 		
-		for cell in self.grid:
-			
-			color = (randint(0,255),randint(0,255),randint(0,255))
-			
-			self.surface.fill(color, cell[0])
-		
+		for cell in self.grid:	
+			cell.draw()
+				
