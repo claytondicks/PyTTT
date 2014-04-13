@@ -5,21 +5,24 @@ Created on Apr 12, 2014
 '''
 
 import pygame
+from grid import Grid
 
 
 class Display(object):
 
 
-    def __init__(self, surface):
+    def __init__(self, surface, player):
         
         self.surface = surface
-        self.image= pygame.image.load('images/grid.png').convert_alpha()
+        self.player = player        
         
         pygame.display.set_caption('Pygame Tic Tac Toe')
+        
+        self.grid = Grid(self.surface, self.player)
         
         
     def draw(self):
         
-        self.surface.blit(self.image, (0,0))
-        
+        self.grid.draw()
+                
         pygame.display.flip()
