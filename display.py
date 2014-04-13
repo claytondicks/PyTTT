@@ -5,7 +5,6 @@ Created on Apr 12, 2014
 '''
 
 import pygame
-from pygame.color import THECOLORS
 
 
 class Display(object):
@@ -14,12 +13,13 @@ class Display(object):
     def __init__(self, surface):
         
         self.surface = surface
+        self.image= pygame.image.load('images/grid.png').convert_alpha()
         
         pygame.display.set_caption('Pygame Tic Tac Toe')
         
         
     def draw(self):
         
-        self.surface.fill(THECOLORS["cornflowerblue"])
+        self.surface.blit(self.image, (0,0))
         
         pygame.display.flip()
