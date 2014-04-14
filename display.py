@@ -11,18 +11,17 @@ from grid import Grid
 class Display(object):
 
 
-    def __init__(self, surface, player):
+    def __init__(self, player):
         
-        self.surface = surface
         self.player = player        
         
         pygame.display.set_caption('Pygame Tic Tac Toe')
         
-        self.grid = Grid(self.surface, self.player)
+        self.grid = Grid(self.player)
         
         
-    def draw(self):
+    def draw(self, surface):
         
-        self.grid.draw()
+        self.grid.draw(surface)
                 
         pygame.display.flip()

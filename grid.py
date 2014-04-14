@@ -10,7 +10,7 @@ from cell import Cell
 
 class Grid(object):
 
-	def __init__(self, surface, player):
+	def __init__(self, player):
 
 		self.grid = [None] * 9
 
@@ -21,13 +21,12 @@ class Grid(object):
 				rect = Rect(y + 5, x + 5, (320/3) - 10, (320/3) - 10)
 				
 				self.grid[row * 3 + col] = Cell(rect)
-			
-		self.surface = surface
+			 
 		self.player = player
 
-	def draw(self):
+	def draw(self, surface):
 		
-		self.surface.fill((0,0,0))
+		surface.fill((0,0,0))
 		
 		for cell in self.grid:	
-			cell.draw(self.surface)
+			cell.draw(surface)
