@@ -3,8 +3,7 @@ Created on Apr 13, 2014
 
 @author: Clayton
 '''
-from pygame import Rect
-
+import pygame
 
 
 class Cell(object):
@@ -12,7 +11,7 @@ class Cell(object):
     classdocs
     '''
 
-    def __init__(self, rect, surface):
+    def __init__(self, rect):
         '''
         Constructor
         '''
@@ -20,10 +19,19 @@ class Cell(object):
         self.rect = rect
         self.state = 0
         
+        self.width = self.rect.width
+        self.height = self.rect.height
+        
+        self.cellsurface = pygame.Surface((self.width , self.height))
+        
         
     def getState(self):
         return self.state
     
-    def draw(self):
-        return self.rect
+    
+    def draw(self, surface):
+        
+        self.cellsurface.fill((255,255,255))
+        
+        surface.blit(self.cellsurface, (self.rect.left, self.rect.top))
                 
