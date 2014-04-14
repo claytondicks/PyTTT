@@ -16,7 +16,7 @@ screenSize = (320, 318)
 surface = pygame.display.set_mode(screenSize)
 player = Player()
 
-display = Display(surface, player)
+display = Display(player)
 
 while True:
     
@@ -25,6 +25,6 @@ while True:
             sys.exit()
         
     
-    display.draw()
+    display.draw(surface)
     
     
