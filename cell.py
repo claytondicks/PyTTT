@@ -34,4 +34,9 @@ class Cell(object):
         self.cellsurface.fill((255,255,255))
         
         surface.blit(self.cellsurface, (self.rect.left, self.rect.top))
+		
+		
+	
+	def isClicked(self, point):
+		pass
                 
