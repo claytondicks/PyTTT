@@ -28,15 +28,22 @@ class Cell(object):
     def getState(self):
         return self.state
     
+	
+	def setState(self, state):
+		self.state = state
     
     def draw(self, surface):
         
-        self.cellsurface.fill((255,255,255))
-        
-        surface.blit(self.cellsurface, (self.rect.left, self.rect.top))
-		
-		
-	
+		if self.state == 1:
+
+			self.cellsurface.fill((255,0,255))
+
+
+		self.cellsurface.fill((255,255,255))
+
+		surface.blit(self.cellsurface, (self.rect.left, self.rect.top))
+
+
 	def isClicked(self, point):
-		pass
-                
+	
+		return self.rect.collidepoint(point)

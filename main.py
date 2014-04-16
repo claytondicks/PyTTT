@@ -7,6 +7,7 @@ Created on April 12, 2014
 import sys
 import pygame
 from display import Display 
+from grid import Grid
 from player import Player
 
 pygame.init()
@@ -14,9 +15,10 @@ pygame.init()
 screenSize = (320, 318)
 
 surface = pygame.display.set_mode(screenSize)
-player = Player()
+grid = Grid()
+player = Player(grid)
 
-display = Display(player)
+display = Display(grid, player)
 
 while True:
     
@@ -25,6 +27,6 @@ while True:
             sys.exit()
         
     
-    display.draw(surface)
-    
+	player.handleInput()
+	display.draw(surface)   
     

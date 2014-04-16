@@ -11,22 +11,24 @@ from pygame.locals import *
  
 class Player(object):
     
-    def __init__(self):
-        pass
-    
+    def __init__(self, grid):
+        self.grid = grid
+		
 	
 	
 	def handleInput(self):
 		
 		LEFT = 1
-		RIGHT = 3
 		
 		for event in pygame.event.get():
 			
+			pos = pygame.mouse.get_pos()
 			
 			if event.type == QUIT:
 				pygame.quit()
 				sys.exit()
 		
 			elif event.type == MOUSEBUTTONDOWN and event.button == LEFT:
-				
+				for cell in self.grid.cells[]:
+					if cell.isClicked(pos):
+						cell.setState(1)
