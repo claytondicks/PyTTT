@@ -18,15 +18,10 @@ surface = pygame.display.set_mode(screenSize)
 grid = Grid()
 player = Player(grid)
 
-display = Display(grid, player)
+display = Display(grid)
 
 while True:
-    
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            sys.exit()
-        
-    
-	player.handleInput()
-	display.draw(surface)   
+       
+    player.handleInput()
+    display.draw(surface)   
     

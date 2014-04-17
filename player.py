@@ -8,12 +8,12 @@ import sys
 import pygame
 from pygame.locals import *
 
- 
+
 class Player(object):
-    
-    def __init__(self, grid):
-        self.grid = grid
-		
+
+	def __init__(self, grid):
+		self.grid = grid
+	
 	
 	
 	def handleInput(self):
@@ -21,7 +21,7 @@ class Player(object):
 		LEFT = 1
 		
 		for event in pygame.event.get():
-			
+		
 			pos = pygame.mouse.get_pos()
 			
 			if event.type == QUIT:
@@ -29,6 +29,6 @@ class Player(object):
 				sys.exit()
 		
 			elif event.type == MOUSEBUTTONDOWN and event.button == LEFT:
-				for cell in self.grid.cells[]:
-					if cell.isClicked(pos):
-						cell.setState(1)
+				for cell in self.grid.cells:
+						if cell.isClicked(pos):
+							cell.setState(1)

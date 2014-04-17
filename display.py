@@ -5,7 +5,6 @@ Created on Apr 12, 2014
 '''
 
 import pygame
-from grid import Grid
 
 
 class Display(object):
@@ -15,7 +14,6 @@ class Display(object):
 
 		pygame.display.set_caption('Pygame Tic Tac Toe')
 
-		self.player = player()
 		self.grid = grid
 
 	def draw(self, surface):
