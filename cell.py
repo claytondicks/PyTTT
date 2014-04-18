@@ -38,6 +38,11 @@ class Cell(object):
 		if self.state == 0:
 			self.state = state
 			
+	def __eq__(self, cell):
+		if self.getState() == cell.getState() and self.getState() != 0:
+			return True
+		else:
+			return False
 	
 	def draw(self, surface):
 			

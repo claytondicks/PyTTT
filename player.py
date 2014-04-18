@@ -29,6 +29,6 @@ class Player(object):
 				sys.exit()
 		
 			elif event.type == MOUSEBUTTONDOWN and event.button == LEFT:
-				for cell in self.grid.cells:
+				for cell in self.grid.getCells():
 						if cell.isClicked(pos):
 							cell.setState(1)

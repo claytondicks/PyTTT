@@ -4,7 +4,6 @@ Created on April 12, 2014
 @author: Clayton
 '''
 
-import sys
 import pygame
 from display import Display 
 from grid import Grid
@@ -21,7 +20,12 @@ player = Player(grid)
 display = Display(grid)
 
 while True:
-       
-    player.handleInput()
-    display.draw(surface)   
-    
+
+	if grid.getWinner() == "player":
+		print "You Won!"
+	elif grid.getWinner() == "computer":
+		print 'You Lost!'
+	else:
+		
+		player.handleInput()
+		display.draw(surface)   
