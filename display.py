@@ -10,11 +10,11 @@ import pygame
 class Display(object):
 
 
-	def __init__(self, grid):
+	def __init__(self, gridManager):
 
 		pygame.display.set_caption('Pygame Tic Tac Toe')
 
-		self.grid = grid
+		self.grid = gridManager
 
 	def draw(self, surface):
 

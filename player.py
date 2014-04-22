@@ -11,8 +11,8 @@ from pygame.locals import *
 
 class Player(object):
 
-	def __init__(self, grid):
-		self.grid = grid
+	def __init__(self, gridManager):
+		self.grid = gridManager
 	
 	
 	

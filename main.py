@@ -6,7 +6,7 @@ Created on April 12, 2014
 
 import pygame
 from display import Display 
-from grid import Grid
+from gridManager import GridManager
 from player import Player
 
 pygame.init()
@@ -14,16 +14,16 @@ pygame.init()
 screenSize = (320, 318)
 
 surface = pygame.display.set_mode(screenSize)
-grid = Grid()
-player = Player(grid)
+gridManager = GridManager()
+player = Player(gridManager)
 
-display = Display(grid)
+display = Display(gridManager)
 
 while True:
 
-	if grid.getWinner() == "player":
+	if gridManager.getWinner() == "player":
 		print "You Won!"
-	elif grid.getWinner() == "computer":
+	elif gridManager.getWinner() == "computer":
 		print 'You Lost!'
 	else:
 		
