@@ -11,8 +11,8 @@ from pygame.locals import *
 
 class Player(object):
 
-	def __init__(self, gridManager):
-		self.grid = gridManager
+	def __init__(self, gameManager):
+		self.theGame = gameManager
 	
 	
 	
@@ -29,6 +29,6 @@ class Player(object):
 				sys.exit()
 		
 			elif event.type == MOUSEBUTTONDOWN and event.button == LEFT:
-				for cell in self.grid.getCells():
+				for cell in self.theGame.grid.getGrid():
 						if cell.isClicked(pos):
 							cell.setState(1)

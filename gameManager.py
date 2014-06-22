@@ -4,36 +4,37 @@ Created on Apr 12, 2014
 @author: Clayton and Brian
 '''
 
-import pygame
-from utils import *
 
-class GridManager(object):
+from grid import Grid
+
+class GameManager(object):
 
 	def __init__(self):
 
 		
-		self.theGrid = GridManager()
+		self.grid = Grid()
 
 		
 	def draw(self, surface):
 		
 		surface.fill((0,0,0))
 		
-		for cell in self.getCells():	
+		for cell in self.grid.getGrid():	
 			cell.draw(surface)
 	
 	
-	def getWinner(self):
+	def getWinner(self):	
 		
-		for i in range(3):	
-			#checks each row for a winner
-			newGrid = [row[i] for row in self.theGrid]	
-			if checkEqual(newGrid):
+		for line in self.grid.getMasks():
+			noughts = 0
+			crosses = 0
+			for coord in line:
+				if self.grid.getCellState(coord) == 2:
+					noughts += 1
+				elif self.grid.getCellState(coord) == 1:
+					crosses += 1		
+			if noughts == 3:
+				return "computer"
+			elif crosses == 3:
 				return "player"
-		
-			#Checks the columns
-			if checkEqual(self.theGrid[i]):
-				return "player"
-		
-		
 		return None

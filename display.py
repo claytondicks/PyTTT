@@ -10,14 +10,14 @@ import pygame
 class Display(object):
 
 
-	def __init__(self, gridManager):
+	def __init__(self, gameManager):
 
 		pygame.display.set_caption('Pygame Tic Tac Toe')
 
-		self.grid = gridManager
+		self.theGame = gameManager
 
 	def draw(self, surface):
 
-		self.grid.draw(surface)
+		self.theGame.draw(surface)
 
 		pygame.display.flip()
