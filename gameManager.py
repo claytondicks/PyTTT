@@ -6,12 +6,15 @@ Created on Apr 12, 2014
 
 
 from grid import Grid
+from cell import Cell
 
 class GameManager(object):
 
+	player = 0
+	computer = 1
+
 	def __init__(self):
 
-		
 		self.grid = Grid()
 
 		
@@ -23,18 +26,9 @@ class GameManager(object):
 			cell.draw(surface)
 	
 	
-	def getWinner(self):	
-		
-		for line in self.grid.getMasks():
-			noughts = 0
-			crosses = 0
-			for coord in line:
-				if self.grid.getCellState(coord) == 2:
-					noughts += 1
-				elif self.grid.getCellState(coord) == 1:
-					crosses += 1		
-			if noughts == 3:
-				return "computer"
-			elif crosses == 3:
-				return "player"
-		return None
+	def getWinner(self):
+		winner = self.grid.getWinner()
+		if winner is Cell.cross:
+			return GameManager.player
+		elif winner is Cell.nought:
+			return GameManager.computer

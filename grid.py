@@ -10,6 +10,16 @@ from cell import Cell
 
 class Grid(object):
 
+	lines = []
+	lines.append([0, 1, 2])
+	lines.append([3, 4, 5])
+	lines.append([6, 7, 8])
+	lines.append([0, 3, 6])
+	lines.append([1, 4, 7])
+	lines.append([2, 5, 8])
+	lines.append([0, 4, 8])
+	lines.append([6, 4, 2])
+
 	def __init__(self):
 		self.grid = [None] * 9
 		
@@ -21,30 +31,25 @@ class Grid(object):
 				
 				rect = Rect(y + 5, x + 5, (320/3) - 10, (320/3) - 10)
 				self.grid[row * 3 + col] = Cell(rect)
+			
+	def getWinner(self):
+		for line in Grid.lines:
+			winner = self.winnerForLine(line)
+			if winner is not None:
+				return winner
+	
+	def winnerForLine(self, line):
+		cellstates = map(lambda cell: self.grid[cell].getState(), line)
+		if None in cellstates:
+			return None
+		if Cell.nought in cellstates and Cell.cross not in cellstates:
+			return Cell.nought
+		if Cell.cross in cellstates and Cell.nought not in cellstates:
+			return Cell.cross
 
-		
-	def getMasks(self):
-		row1 = [(5,5), (111, 5), (217,5)]
-		row2 = [(5,111), (111, 111), (217,111)]
-		row3 = [(5,217), (111, 217), (217,217)]
-		
-		col1 = [(5,5), (5, 111), (5,212)]
-		col2 = [(111,5), (111, 111), (111,5)]
-		col3 = [(217,5), (217, 106), (217,217)]
-		
-		diag1 = [(5,5), (111, 111), (217,217)]
-		diag2 = [(5,217), (111, 111), (217,5)]
-		
-		return row1, row2, row3, col1, col2, col3, diag1, diag2
-	
-	
 	def getGrid(self):
 		return self.grid
 	
-	
 	def getCellState(self, pos):
 		for cell in self.grid:
-			if cell.isClicked(pos):
-				return cell.getState()
-			
-		return 0	
+			return cell.getState()
