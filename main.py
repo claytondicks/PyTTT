@@ -21,8 +21,11 @@ player = Player(gameManager)
 display = Display(gameManager)
 
 winner = None
+clock = pygame.time.Clock()
 
 while winner is None:
+
+	clock.tick(30)
 
 	player.handleInput()
 	display.draw(surface)

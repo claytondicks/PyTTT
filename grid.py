@@ -49,7 +49,4 @@ class Grid(object):
 
 	def getGrid(self):
 		return self.grid
-	
-	def getCellState(self, pos):
-		for cell in self.grid:
-			return cell.getState()
+
