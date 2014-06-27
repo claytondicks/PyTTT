@@ -5,27 +5,35 @@ Created on April 12, 2014
 '''
 
 import pygame
+pygame.init()
+screenSize = (320, 318)
+surface = pygame.display.set_mode(screenSize)
+
+
 from display import Display 
 from gameManager import GameManager
 from player import Player
 
-pygame.init()
 
-screenSize = (320, 318)
-
-surface = pygame.display.set_mode(screenSize)
 gameManager = GameManager()
 player = Player(gameManager)
 
 display = Display(gameManager)
 
-while True:
+winner = None
+clock = pygame.time.Clock()
 
-	if gameManager.getWinner() == "player":
-		print "You Won!"
-	elif gameManager.getWinner() == "computer":
-		print 'You Lost!'
-	else:
+while winner is None:
+
+	clock.tick(30)
+
+	player.handleInput()
+	display.draw(surface)
+	
+	winner = gameManager.getWinner()
 		
-		player.handleInput()
-		display.draw(surface)   
+
+if winner is GameManager.player:
+	print "You Won!"
+else:
+	print 'You Lost!'

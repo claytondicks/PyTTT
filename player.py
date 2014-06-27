@@ -8,14 +8,13 @@ import sys
 import pygame
 from pygame.locals import *
 
+from cell import Cell
 
 class Player(object):
 
 	def __init__(self, gameManager):
 		self.theGame = gameManager
-	
-	
-	
+
 	def handleInput(self):
 		
 		LEFT = 1
@@ -31,4 +30,4 @@ class Player(object):
 			elif event.type == MOUSEBUTTONDOWN and event.button == LEFT:
 				for cell in self.theGame.grid.getGrid():
 						if cell.isClicked(pos):
-							cell.setState(1)
+							cell.setState(Cell.cross)
