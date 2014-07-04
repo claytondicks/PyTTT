@@ -31,3 +31,4 @@ class Player(object):
 				for cell in self.theGame.grid.getGrid():
 						if cell.isClicked(pos):
 							cell.setState(Cell.cross)
+							return True
