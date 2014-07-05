@@ -23,14 +23,23 @@ class Grid(object):
 	def __init__(self):
 		self.grid = [None] * 9
 		
-		
 		for row in range(3):
 			y = row * (320/3)
 			for col in range(3):
 				x = col * (320/3)
 				
 				rect = Rect(y + 5, x + 5, (320/3) - 10, (320/3) - 10)
-				self.grid[row * 3 + col] = Cell(rect)
+				index = row * 3 + col
+				
+				self.grid[index] = Cell(rect)
+		
+
+		for i in range(len(self.grid)):
+			solutions = []
+			for line in Grid.lines:
+				if i in line:
+					solutions.append((self.grid[line[0]], self.grid[line[1]], self.grid[line[2]]))
+			self.grid[i].solutions = solutions
 			
 	def getWinner(self):
 		for line in Grid.lines:
@@ -49,4 +58,3 @@ class Grid(object):
 
 	def getGrid(self):
 		return self.grid
-

@@ -4,7 +4,7 @@ Created on Jul 4, 2014
 @author: Clayton
 '''
 from cell import Cell
-
+from option import Option
 
 class Computer(object):
 	
@@ -12,23 +12,8 @@ class Computer(object):
 		self.theGame = gameManager
 		
 		self.grid = self.theGame.grid.getGrid()
-		
+		self.options = map(Option, self.grid)
 
-	def count(self, line):
-		computer = 0
-		player = 0
-		empty = 0
-		
-		
-		for cell in line:
-			if cell.getState() == Cell.nought:
-				computer += 1			
-			elif cell.getState() == Cell.cross:
-				player += 1
-			else:
-				empty += 1
-				
-		return computer, player, empty
 				
 	def placeNought(self, line):
 	
@@ -40,21 +25,6 @@ class Computer(object):
 	
 	def move(self):
 
-		lines = self.theGame.grid.lines
-		
-		for line in lines:
-			cellstates = map(lambda cell: self.grid[cell], line)
-			
-			computer, player, empty = self.count(cellstates)
-			
-			if player == 2 and empty == 1:
-				self.placeNought(cellstates)
-				return
-			elif computer == 2 and empty == 1:
-				self.placeNought(cellstates)
-				return
-			elif computer == 0 and empty == 2:
-				self.placeNought(cellstates)
-				return
-			
-			
+		self.options.sort()
+		top = self.options[0]
+		top.cell.setState(Cell.nought)
