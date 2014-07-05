@@ -10,8 +10,8 @@ class Cell(object):
 	'''
 	classdocs
 	'''
-	nought = 0
-	cross = 1
+	nought = False
+	cross = True
 
 	fill = {}
 	fill[nought] = pygame.image.load("images/o.png").convert_alpha()
@@ -39,7 +39,7 @@ class Cell(object):
 	def setState(self, state):
 		if self.state == None:
 			self.state = state
-			
+	
 	def __eq__(self, cell):
 		if self.getState() == cell.getState() and self.getState() is not None:
 			return True

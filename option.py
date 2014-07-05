@@ -10,18 +10,40 @@ class Option(object):
 		
 		if self.cell.state is not None:
 			return False
+			
+
 		
 		if self.hasTwo(Cell.nought) or self.hasTwo(Cell.cross):
 			return True
 		
+		if other.hasTwo(Cell.nought) or other.hasTwo(Cell.cross):
+			return False
+		
 		if self.numEmptyLines() > other.numEmptyLines():
 			return True
+			
+		if other.numEmptyLines() >= self.numEmptyLines():
+			return False
+			
+		if self.numAvailable() > other.numAvailable():
+			return True
 		
+		if other.numAvailable() >= self.numAvailable():
+			return False
+			
 		return False
 
+	def numAvailable(self):
+		counter = 0
+		for line in self.cell.solutions:
+			c = self.count(line)
+			if c[Cell.nought] == 1 and c[Cell.cross] == 0:
+				counter += 1
+		return counter
+		
 	def hasTwo(self, player):
 		for line in self.cell.solutions:
-			if self.count(line)[player] is 2:
+			if self.count(line)[player] is 2 and self.count(line)[not player] is 0:
 				return True
 		return False
 		

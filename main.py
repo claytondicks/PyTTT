@@ -25,22 +25,22 @@ display = Display(gameManager)
 winner = None
 clock = pygame.time.Clock()
 
-turn = 0
+playerTurn = True
 
 
 while winner is None:
 
 	clock.tick(30)
 
-	if turn == 0:
+	if playerTurn:
 		if player.handleInput():
 			winner = gameManager.getWinner()
-			turn = 1
+			playerTurn = False
 		
-	if turn == 1:
+	if not playerTurn:
 		computer.move()
 		winner = gameManager.getWinner()
-		turn = 0
+		playerTurn = True
 		
 	display.draw(surface)	
 	

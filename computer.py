@@ -26,5 +26,7 @@ class Computer(object):
 	def move(self):
 
 		self.options.sort()
-		top = self.options[0]
-		top.cell.setState(Cell.nought)
+		for o in self.options:
+			if o.cell.state is None:
+				o.cell.setState(Cell.nought)
+				return
