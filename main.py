@@ -34,14 +34,16 @@ while winner is None:
 
 	if turn == 0:
 		if player.handleInput():
+			winner = gameManager.getWinner()
 			turn = 1
 		
 	if turn == 1:
 		computer.move()
+		winner = gameManager.getWinner()
 		turn = 0
 		
 	display.draw(surface)	
-	winner = gameManager.getWinner()
+	
 		
 
 if winner is gameManager.player:
