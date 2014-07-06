@@ -18,5 +18,4 @@ class Display(object):
 	def draw(self, surface):
 
 		self.theGame.draw(surface)
-
 		pygame.display.flip()
