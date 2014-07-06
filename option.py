@@ -41,7 +41,8 @@ class Option(object):
 		
 	def hasTwo(self, player):
 		for line in self.cell.solutions:
-			if self.count(line)[player] is 2 and self.count(line)[not player] is 0:
+			c = self.count(line)
+			if c[player] is 2 and c[not player] is 0:
 				return True
 		return False
 		

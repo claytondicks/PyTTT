@@ -5,6 +5,7 @@ Created on Jul 4, 2014
 '''
 from cell import Cell
 from option import Option
+from random import shuffle
 
 class Computer(object):
 	
@@ -24,8 +25,10 @@ class Computer(object):
 		
 	
 	def move(self):
-
+	
+		shuffle(self.options)
 		self.options.sort()
+		
 		for o in self.options:
 			if o.cell.state is None:
 				o.cell.setState(Cell.nought)
