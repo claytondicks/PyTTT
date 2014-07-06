@@ -15,7 +15,7 @@ class Player(object):
 	def __init__(self, gameManager):
 		self.theGame = gameManager
 
-	def handleInput(self):
+	def turn(self):
 		
 		LEFT = 1
 		
@@ -32,3 +32,4 @@ class Player(object):
 						if cell.isClicked(pos):
 							cell.setState(Cell.cross)
 							return True
+		return False

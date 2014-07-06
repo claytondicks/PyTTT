@@ -10,21 +10,9 @@ from random import shuffle
 class Computer(object):
 	
 	def __init__(self, gameManager):
-		self.theGame = gameManager
-		
-		self.grid = self.theGame.grid.getGrid()
-		self.options = map(Option, self.grid)
-
-				
-	def placeNought(self, line):
+		self.options = map(Option, gameManager.grid.getGrid())
 	
-		for cell in line:
-			if cell.getState() == None:
-				cell.setState(Cell.nought)
-				break
-		
-	
-	def move(self):
+	def turn(self):
 	
 		shuffle(self.options)
 		self.options.sort()
@@ -32,4 +20,7 @@ class Computer(object):
 		for o in self.options:
 			if o.cell.state is None:
 				o.cell.setState(Cell.nought)
-				return
+				return True
+				
+		return True
+		

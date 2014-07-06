@@ -7,16 +7,27 @@ Created on Apr 12, 2014
 
 from grid import Grid
 from cell import Cell
+from player import Player
+from computer import Computer
 
 class GameManager(object):
 
-	player = 0
-	computer = 1
-
 	def __init__(self):
-
 		self.grid = Grid()
+		self.players = {}
+		self.players[Cell.cross] = Player(self)
+		self.players[Cell.nought] = Computer(self)
+		self.turn = Cell.cross
+		
+	def doTurn(self):
+		winner = self.getWinner()
+		if winner is not None:
+			return winner
+	
+		if self.players[self.turn].turn():
+			self.turn = not self.turn
 
+		return None
 		
 	def draw(self, surface):
 		
@@ -25,10 +36,5 @@ class GameManager(object):
 		for cell in self.grid.getGrid():	
 			cell.draw(surface)
 	
-	
 	def getWinner(self):
-		winner = self.grid.getWinner()
-		if winner is Cell.cross:
-			return GameManager.player
-		elif winner is Cell.nought:
-			return GameManager.computer
+		return self.grid.getWinner()

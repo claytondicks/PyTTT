@@ -21,9 +21,7 @@ class Cell(object):
 		'''
 		Constructor
 		'''
-		
 		self.rect = rect
-		
 		self.state = None
 		
 		self.width = self.rect.width
@@ -34,7 +32,6 @@ class Cell(object):
 	
 	def getState(self):
 		return self.state
-	
 	
 	def setState(self, state):
 		if self.state == None:
