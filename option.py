@@ -10,27 +10,25 @@ class Option(object):
 		
 		if self.cell.state is not None:
 			return False
-			
 
-		
-		if self.hasTwo(Cell.nought) or self.hasTwo(Cell.cross):
+		if self.hasTwo(Cell.nought):
+			return True
+			
+		if self.hasTwo(Cell.cross):
 			return True
 		
-		if other.hasTwo(Cell.nought) or other.hasTwo(Cell.cross):
+		if other.hasTwo(Cell.nought):
+			return False
+			
+		if other.hasTwo(Cell.cross):
 			return False
 		
 		if self.numEmptyLines() > other.numEmptyLines():
 			return True
-			
-		if other.numEmptyLines() >= self.numEmptyLines():
-			return False
-			
+
 		if self.numAvailable() > other.numAvailable():
 			return True
-		
-		if other.numAvailable() >= self.numAvailable():
-			return False
-			
+
 		return False
 
 	def numAvailable(self):
