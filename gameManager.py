@@ -9,6 +9,7 @@ from grid import Grid
 from cell import Cell
 from player import Player
 from computer import Computer
+from random import choice
 
 class GameManager(object):
 
@@ -17,7 +18,7 @@ class GameManager(object):
 		self.players = {}
 		self.players[Cell.cross] = Player(self)
 		self.players[Cell.nought] = Computer(self)
-		self.turn = Cell.cross
+		self.turn = choice([Cell.cross, Cell.nought])
 		
 	def doTurn(self):
 	
