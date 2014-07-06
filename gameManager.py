@@ -20,12 +20,10 @@ class GameManager(object):
 		self.turn = Cell.cross
 		
 	def doTurn(self):
-		winner = self.getWinner()
-		if winner is not None:
-			return winner
 	
 		if self.players[self.turn].turn():
 			self.turn = not self.turn
+			return self.getWinner()
 
 		return None
 		
